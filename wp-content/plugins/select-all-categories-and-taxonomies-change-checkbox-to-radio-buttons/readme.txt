@@ -2,7 +2,7 @@
 Contributors: MooveAgency
 Donate link: https://www.mooveagency.com/wordpress-plugins/
 Stable tag: trunk
-Tags: radio select, taxonomy radio select
+Tags: radio select, taxonomy radio select, taxonomy, radio, checkbox, taxonomy meta box, meta box, meta, meta boxes, taxonomies
 Requires at least: 4.3
 Tested up to: 5.0
 License: GPLv2
@@ -27,6 +27,11 @@ The "select all" functionality can be enabled only if the taxonomy display type 
 2. Output example (changed metaboxes)
 
 == Changelog ==
+
+= 1.3.0 =
+* Improved metabox, added ability to add new term
+* Added option to select default taxonomy term
+* Bugfixes
 
 = 1.2.1. =
 * WP5 compatibility
