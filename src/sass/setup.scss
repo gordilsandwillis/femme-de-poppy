@@ -1,3 +1,33 @@
+// Setup GW UI
+@import '../../node_modules/gw-ui/dist/sass/reset';
+@import '../../node_modules/gw-ui/dist/sass/variables';
+@import '../../node_modules/gw-ui/dist/sass/mixins';
 
+// Override GW UI Defaults
+@import 'setup/variables';
+@import 'setup/fonts';
 
-* { background : red; }
+@import '../../node_modules/gw-ui/dist/sass/base';
+@import '../../node_modules/gw-ui/dist/sass/grid';
+@import '../../node_modules/gw-ui/dist/sass/typography';
+@import '../../node_modules/gw-ui/dist/sass/spacing';
+
+@import '../../node_modules/gw-ui/dist/sass/icons';
+@import '../../node_modules/gw-ui/dist/sass/animations';
+
+@import '../../node_modules/gw-ui/dist/Button';
+@import '../../node_modules/gw-ui/dist/Input';
+
+// Site Specific
+// @import 'setup/global';
+// @import 'setup/typography';
+@import './site-specific/global';
+
+// Site Components
+// @import 'components/header';
+// @import 'components/menu';
+// @import 'components/footer';
+// @import 'components/slick';						// Style for a slideshow package
+// @import 'components/page-loader';	// Style for a page loading (ussually a spinner or something)
+// @import 'components/animsition';		// Style for a page transition package
+

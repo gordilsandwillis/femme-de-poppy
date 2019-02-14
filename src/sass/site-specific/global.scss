@@ -1,0 +1,29 @@
+@import '../setup/variables';
+
+.bg-light-blue {
+	background-color: $light-blue;
+}
+.bg-blue {
+	background-color: $text-color;
+	color: $white;
+}
+
+.bg-grey {
+	background-color: $light-grey;
+}
+
+.bg-white {
+	background-color: $white;
+}
+
+.bg-plum {
+	background-color: plum;
+}
+
+.black-text {
+	color: $black;
+}
+
+.orange-text {
+	color: $main-color;
+}

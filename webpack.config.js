@@ -1,6 +1,8 @@
 
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+
 const data = require('./data')
 
 const path = require('path');
@@ -72,7 +74,7 @@ const config = {
 	},
 
 	plugins: [
-	 new StaticSiteGeneratorPlugin({
+	 	new StaticSiteGeneratorPlugin({
 				//crawl: true,
 				paths: data.paths,
 				locals: data.locals,
@@ -80,6 +82,12 @@ const config = {
 				//	window: {}
 				//}
 			}),
+	  new WebpackBuildNotifierPlugin({
+	    title: "Webpack Build",
+	    logo: path.resolve("./img/favicon.png"),
+	    suppressSuccess: false,
+	    sound: false
+	  }),
 
 	 new ExtractTextPlugin('[name].css')
 	],

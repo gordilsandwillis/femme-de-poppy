@@ -1,0 +1,17 @@
+@import '../../../sass/setup/variables';
+
+.two-up-image-item {
+	&.orange {
+		img {
+			border: 3px solid $main-color;
+			box-shadow: 10px 10px $main-color;
+		}
+	}
+
+	&.blue {
+		img {
+			border: 3px solid $text-color;
+			box-shadow: 10px 10px $text-color;
+		}
+	}
+}
