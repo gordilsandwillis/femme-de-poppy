@@ -5,8 +5,10 @@ import { StaticRouter, BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import * as contentful from 'contentful'
 import configureStore from './store';
-import routes from './routes';
+import Routes from './routes';
 import Html from 'containers/Html';
+
+import { fetchPages } from 'actions/contentful';
 
 import 'sass/setup';
 
@@ -18,12 +20,15 @@ const contentfulClient = contentful.createClient({
 const store = configureStore();
 store.dispatch({type: 'CONTENTFUL_CLIENT_CREATED', payload : contentfulClient});
 
+//Fetch all pages when app loads.
+store.dispatch( fetchPages() );
+
 /* Client render (isomorphic js) */
 if (typeof document !== 'undefined') {
   ReactDOM.render(
   	<Provider store={store}>
 	  	<BrowserRouter>
-	  		{routes}
+	  		<Routes />
 	  	</BrowserRouter>
   	</Provider>
 		, document.getElementById('root'));
@@ -35,7 +40,7 @@ export default (locals) => {
 		<StaticRouter location={locals.path} context={{}}>
 			<Html title={locals.title} assets={locals.assets}>
 				<Provider store={store}>
-				{routes}
+					<Routes />
 				</Provider>
 			</Html>
 		</StaticRouter>

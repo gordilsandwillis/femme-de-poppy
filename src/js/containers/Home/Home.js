@@ -23,81 +23,50 @@ class Home extends Component {
 	// }
 
 	componentWillMount () {
-		const { fetchPages } = this.props.contentfulActions;
-		fetchPages();
+
 	}
 
 	componentDidMount () {
-		// const { pages } = this.props;
-		
+		const { pages, contentfulActions } = this.props;
+		const page = pages.items.find( (page) => page.fields.pageSlug === 'home');
+		contentfulActions.fetchPage(page.sys.id);
+
 	}
 
-	// getPageContent(pageId) {
-	// 	console.log('getPageContent called...');
-	// 	this.props.client.getEntry(pageId)
-	// 	.then( (page) => {
-	// 		console.log(page);
-	// 	})
-	// 	.catch(console.error)	
-	// }
-
-	getPageContent = (pageId) =>{
-		this.props.client.getEntry(pageId)
-		.then( (page) => {
-			console.log('getPageContent :: page : ', page);
-		})
-		.catch(console.error)	
+	componentWillReceiveProps (nextProps) {
+		console.log(nextProps);
 	}
 
 	render() {
-		console.log('hello Home');
-		const { pages } = this.props;
-		// var homePageId;
-		// if ( pages && pages.length >0){
-		// 	pages.map((page)=>{
-		// 		if(page.fields.pageSlug == 'home'){
-		// 			homePageId = page.sys.id;
-		// 		}
-		// 	})
-		// 	console.log('homePageId', homePageId)
-		// 	this.getPageContent(homePageId);
-		// }
-
-		// pages.map((page)=>{
-		// 	if(page.fields.pageSlug == 'home'){
-		// 		homePage = 
-		// 	}
-		// })
-		console.log(pages);
 
 		const leftImage = {
 			imageSrc : 'https://picsum.photos/400/450',
 			caption : 'Left Image Caption',
-			imageSize : false 
+			imageSize : false
 		};
 		const rightImage = {
 			imageSrc : 'https://picsum.photos/400/900',
 			caption : 'Right Image Caption',
-			imageSize : true 
+			imageSize : true
 		};
 
 		const processBlurbs = [
-			{	
+			{
 				title: "Training Made Easy",
 				text: "My clients tend to be particularly busy dog lovers. No worries there, as I do much of the training for you, working with your dogwherever you need to see results."
-			},	
+			},
 
-			{	
+			{
 				title: "Training Made Fun",
 				text: "Dog training shouldn’t have to be another chore or entry on your to-do list. I’ll show you and your dog how to have fun integrating training into everyday life."
 			},
 
-			{	
+			{
 				title: "Positivity Based",
 				text: "Like humans, dogs learn best when they’re relaxed. That’s why I use only science-based positive training methods for results you can feel good about."
 			},
 
-			{	
+			{
 				title: "Prepped For Real Life",
 				text: "Lola Dogs can handle any situation. I work with your dog in real-life situations so you get good behavior at home and wherever you take your Lola Dog."
 			}
@@ -117,11 +86,11 @@ class Home extends Component {
 		      ],
 		    },
 		  ],
-		};	
+		};
 
 		return (
 			<div>
-				<LargeTextBlock 
+				<LargeTextBlock
 					title=""
 					text={largeText1}
 					buttons=""
@@ -130,7 +99,7 @@ class Home extends Component {
 					bgClass="mt-margin bg-white"
 				/>
 
-				<LargeTextBlock 
+				<LargeTextBlock
 					title="Our Goal"
 					text="We are dedicated to working with you and your dog on training techniques that provide confidence. Knowing your dog is calm and focused at home or outside, around other animals, and able to greet people politely with all four paws planted."
 					buttons={[

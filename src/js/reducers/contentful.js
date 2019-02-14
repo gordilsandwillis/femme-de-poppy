@@ -3,7 +3,9 @@
 import {
 	CONTENTFUL_CLIENT_CREATED,
 	SITE_INFO_FOUND,
-	PAGES_FOUND
+	PAGES_FOUND,
+	PAGE_FOUND,
+	FETCH_PAGE
 } from '../actions/contentful';
 
 const initialState = {
@@ -26,6 +28,12 @@ export default (state = initialState, action) => {
 
 		case PAGES_FOUND:
 			return {...state, pages: action.payload}
+
+		case PAGE_FOUND: {
+			console.log("PAGE_FOUND");
+			console.log(action.payload);
+
+		}
 
 		default:
 			return state;

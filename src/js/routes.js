@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 import { Switch, Route, DefaultRoute } from 'react-router-dom';
 
@@ -25,15 +26,27 @@ const DefaultLayout = ({ component: Component, ...props }) => (
 	}}
 />);
 
-const routes = (
-  <Switch>
-    <DefaultLayout exact path="/" component={Home} />
-    <DefaultLayout exact path="/about" component={About} />
-    <DefaultLayout exact path="/private-sessions" component={PrivateSessions} />
-    <DefaultLayout exact path="/training-videos" component={TrainingVideos} />
-    <DefaultLayout exact path="/contact" component={Contact} />
-    <Route path="*" component={NotFound} />
-  </Switch>
-)
+const Routes = ({pages}) => {
+		if (!pages) {
+			return false //show loader here
+		}
+		return (
+		  <Switch>
+		    <DefaultLayout exact path="/" component={Home} />
+		    <DefaultLayout exact path="/about" component={About} />
+		    <DefaultLayout exact path="/private-sessions" component={PrivateSessions} />
+		    <DefaultLayout exact path="/training-videos" component={TrainingVideos} />
+		    <DefaultLayout exact path="/contact" component={Contact} />
+		    <Route path="*" component={NotFound} />
+		  </Switch>
+		)
+}
 
-export default routes;
+const mapStoreToProps = (store) => {
+	return {
+		pages : store.pages
+	};
+};
+
+
+export default connect(mapStoreToProps)(Routes);
