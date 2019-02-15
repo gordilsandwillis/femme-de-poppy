@@ -1,0 +1,168 @@
+@import '../../../sass/setup/variables';
+@import '../../../../node_modules/gw-ui/dist/sass/mixins';
+
+header {
+	.menu-icon {
+		position: fixed;
+		top: calc(#{$gutter} + 4px);
+		right: calc(#{$gutter} + 4px);
+		cursor: pointer;
+		z-index: 7;
+		@include respond($lg) {
+			top: $gutter;
+			right: $gutter;
+		}
+		> span {
+			display: block;
+			border-top: 3px solid $main-color;
+			border-bottom: 3px solid $main-color;
+			padding: 5px 0;
+			transition: color visibility $md-speed $ease;
+			width: 24px;
+			@include respond($lg) {
+				width: 30px;
+			}
+			&:after {
+				content: '';
+				display: block;
+				background: $main-color;
+				height: 3px;
+			}
+		}
+		&:hover {
+			color: $text-color;
+		// 	.nav-sidebar {
+		// 		transform: translate3d(-100%, 0, 0);
+		// 	}
+		}
+		&.hide {
+			visibility: hidden;
+		}
+	}
+}
+
+.menu-wrap{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 6;
+	visibility: hidden;
+	transition: visibility $slow-speed $ease;
+
+	&.open{
+		visibility: visible;
+		opacity: 1;
+		.menu-overlay{
+			visibility: visible;
+			opacity: 1;
+		}
+		.menu{
+			transform: translate3d(-100%,0,0);
+			// animation: menuBounceIn .8s forwards;
+		 	// animation-fill-mode: both;
+		}
+
+	}
+	
+	.menu-overlay{
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: transparent;
+		z-index: 1;
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility $slow-speed $ease, opacity $slow-speed $ease;
+
+	}
+
+	.close-menu {
+		position: fixed;
+		top: calc(#{$gutter} + 4px);
+		right: calc(#{$gutter} + 4px);
+		cursor: pointer;
+		z-index: 7;
+		@include respond($lg) {
+			top: $gutter;
+			right: $gutter;
+		}
+
+	}
+
+	.menu{
+		display:flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		max-width: 18rem;
+		padding: $mobile-margin;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 100%;
+		background-color: $text-color;
+		color: $white;
+		z-index: 7;
+		transition: transform $slow-speed $ease;
+
+		overflow-x: hidden;
+		overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
+
+		@include respond($md){
+			padding: $margin $space-3 $mobile-margin;
+		}
+		.close-menu {
+			margin-left:-7px;
+		}
+		.menu-link {
+			// flex-grow: 1;
+			// font-size: 2.5rem;
+		}
+	}
+
+	a {
+		color: $white;
+		&:hover {
+			color: $main-color;
+		}
+	}
+
+	.menu-section-close, 
+	.menu-section-footer {
+		flex-grow: 0;
+		flex-shrink: 0;
+
+		.footer-letter {
+			margin-left: -0.25rem;
+			margin-right: .5rem;
+			text-align:center;
+			width: 24px;
+			img {
+				margin: -1px auto 0;
+				width:16px;
+				display: block;
+			}
+		}
+
+		.footer-title {
+			color: $black;
+		}
+		a.footer-social {
+			display: block;
+			margin-left: 0.25rem;
+		}
+		
+	}
+	.menu-section-menu{
+		flex-grow: 1;
+		flex-shrink: 0;
+		display:flex;
+		flex-direction: column;
+	}
+
+}

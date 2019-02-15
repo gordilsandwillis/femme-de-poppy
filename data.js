@@ -3,9 +3,13 @@
 module.exports = {
   paths : [
     '/',
-    '/about'
+    '/home',
+    '/about',
+    '/private-sessions',
+    '/training-videos',
+    '/contact'
   ],
   locals : {
-	  title: 'My Static Site',
+	  title: 'Lola Dogs',
   }
 }

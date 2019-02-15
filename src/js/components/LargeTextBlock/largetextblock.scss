@@ -1,26 +1,25 @@
 @import '../../../sass/setup/variables';
 
-
+.large-text-section{
+	// padding: $space-2 0;
+}
 
 .large-text-block {
 	&.card {
 		background-color: $white;
 		padding: $space-4;
+		color: $text-color;
+		border: 3px solid $text-color;
+		box-shadow: 10px 10px $text-color;
 		
-		&.orange {
+		&.Orange {
 			color: $main-color;
 			border: 3px solid $main-color;
 			box-shadow: 10px 10px $main-color;
 		}
 
-		&.blue {
-			color: $text-color;
-			border: 3px solid $text-color;
-			box-shadow: 10px 10px $text-color;
-		}
-		
 	}
 	p {
-		max-width: 40rem;
+		// max-width: 40rem;
 	}
 }

@@ -14,19 +14,20 @@ export const PAGE_FOUND = 'PAGE_FOUND';
 
 export const fetchSiteInfo = () => {
 	return (dispatch, getState) => {
-    console.log(getState());
+    // console.log(getState());
 		const { client } = getState();
-   	const params = Object.assign({'content_type' : 'site'});
+   	const params = Object.assign({'content_type' : 'generalSiteInfo', include : 2});
   	client.getEntries(params).then( (res) => {
     	dispatch({type : SITE_INFO_FOUND, payload : res});
-  	});
+  	})
+    .catch(console.error)
 	}
 }
 
 
 export const fetchPages = () => {
 	return (dispatch, getState) => {
-        console.log(getState());
+        // console.log(getState());
 
 		const { client } = getState();
   	const params = Object.assign({'content_type' : 'page', include : 1});
@@ -42,7 +43,7 @@ export const fetchPage  = (id) => {
 
     dispatch({type : FETCH_PAGE});
 
-    client.getEntry(id, { include : 1}).then( (res) => {
+    client.getEntry(id, { include : 3}).then( (res) => {
       dispatch({
         type : PAGE_FOUND,
         payload : res

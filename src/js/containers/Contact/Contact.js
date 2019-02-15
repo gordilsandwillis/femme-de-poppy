@@ -1,73 +1,183 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import actionWrapper from 'redux-action-wrapper';
+import * as contentfulActions from '../../actions/contentful';
+
+import { Input, TextArea, Select, Button, Loader, Radio } from 'gw-ui';
 import LargeTextBlock from '../../components/LargeTextBlock';
-import WideImageBlock from '../../components/WideImageBlock';
 
 import './contact.scss';
 
 class Contact extends Component {
 
+	state = {
+		title : false,
+		blocks : [],
+		name : '',
+		email : '',
+		address : '',
+		city : '',
+		state : '',
+		zip : '',
+		dogName : '',
+		breed : '',
+		age : '',
+		sex : '',
+		spayed : false,
+		vaccinated : false,
+		agressive : false,
+		bitten : false,
+		subject : { label : this.props.subject ? this.props.subject : 'Submissions', value : this.props.subject ? this.props.subject : 'Submissions' },
+		message : ''
+	}
+
+	componentDidMount () {
+		const { pages, contentfulActions } = this.props;
+		const page = pages.items.find( (page) => page.fields.pageSlug === 'contact');
+		contentfulActions.fetchPage(page.sys.id);
+
+	}
+
+	componentWillReceiveProps (nextProps) {
+		// console.log('nextProps:',nextProps);
+		this.setState({
+			title : nextProps.page.fields.title ? nextProps.page.fields.title : false,
+			blocks : nextProps.page.fields.blocks ? nextProps.page.fields.blocks : false,
+			loading : false
+		});
+	}
+
+	handleInput = (event) => {
+		if (event.target.name !== 'subject') {
+			this.setState({ [event.target.name] : event.target.value });
+		} else {
+			this.setState({ [event.target.name] : { label : event.target.value, value : event.target.value } });
+		}
+	}
+
 	render() {
+		if ( this.state.loading ){
+			return <div className="loader-wrap"><Loader className="large" /></div>;
+		}
+
+		console.log(this.state.blocks)
+		let formValid = this.state.name !== '' && this.state.email !== '' && this.state.message !== '' && this.state.dogName !== '' && this.state.breed !== '' && this.state.age !== '' && this.state.sex !== '' && this.state.spayed !== false && this.state.vaccinated !== false && this.state.agressive !== false && this.state.bitten !== false ? true : false;
+
+		let emailFormTo = this.state.subject.value === 'Investor Relations' ? 'https://formspree.io/james@haydenir.com' : 'https://formspree.io/info@dolphinentertainment.com';
+
 		return (
-			<div>
-				<section className="bg-grey py-margin">
-					<div className="container">
-						<h1 className="page-title align-center my-margin">Great energy provides great results!</h1>
+			<div className="contact-form-wrapper">
+				<div className="container">
 
-						<WideImageBlock
-							imageSrc={"https://picsum.photos/1500/1000"}
-							className="mt-4"
-						/>
-						<LargeTextBlock 
-							title=""
-							text="Before becoming a CCPDT, I spent many years mentoring under a range of well-respected and highly accomplished dog trainers, including working for several years under trainers and consulting with greats such as Dee Ganley. My canine resume also includes five years as a veterinary assistant and two years of eye-opening shelter work."
-							buttons=""
-							cardStyle=""
-							className="my-margin"
-						/>
+				{this.state.blocks.map((block, index )=>{
+					if (block.sys.contentType.sys.id == "largeTextBlock"){
+						return (
+							<LargeTextBlock
+								key={'block-'+index}
+								title={ block.fields.title ? block.fields.title: false}
+								text={block.fields.text}
+								buttons=""
+								cardStyle={block.fields.cardStyle}
+								bgColor={block.fields.backgroundColor}
+								textColor={block.fields.textColor}
+							/>
+						)
+					}
+				})}
+				<form action={emailFormTo} method="POST" className={"contact-form " + this.props.className}>
+					<div className="grid-flex v-spaced">
+						<div className="col-6">
+							<Input onChange={this.handleInput} value={this.state.name} name="name" placeholder="Name" />
+						</div>
+						<div className="col-6">
+							<Input onChange={this.handleInput} value={this.state.email} name="email" placeholder="Email" />
+						</div>
 
-						<LargeTextBlock 
-							title=""
-							text="Brian Viola is a CCPDT awarded trainer who adheres to a strict ethical approach with a commitment to education & professional development. His techniques are mindful, specialized and positive goal oriented."
-							buttons=""
-							cardStyle=""
-							className="my-margin"
-						/>
+						<div className="col-12">
+							<Input onChange={this.handleInput} value={this.state.address} name="address" placeholder="Address" />
+						</div>
+						
+						<div className="col-6">
+							<Input onChange={this.handleInput} value={this.state.city} name="city" placeholder="City" />
+						</div>
+
+						<div className="col-2">
+							<Input onChange={this.handleInput} value={this.state.state} name="state" placeholder="State" />
+						</div>
+
+						<div className="col-4">
+							<Input onChange={this.handleInput} value={this.state.zip} name="zip" placeholder="Zip" />
+						</div>
+
+						<div className="col-6">
+							<Input onChange={this.handleInput} value={this.state.dogName} name="dogName" placeholder="Dog's Name" />
+						</div>
+
+						<div className="col-6">
+							<Input onChange={this.handleInput} value={this.state.breed} name="breed" placeholder="Breed" />
+						</div>
+
+						<div className="col-6">
+							<Input onChange={this.handleInput} value={this.state.age} name="age" placeholder="Age" />
+						</div>
+
+						<div className="col-6">
+							<Input onChange={this.handleInput} value={this.state.sex} name="sex" placeholder="Sex" />
+						</div>
+
+						<div className="col-6">
+							<Radio 
+								onChange={this.handleInput} value={this.state.spayed} name="spayed" label="Spayed / Neutered ?" />
+						</div>
+
+						<div className="col-6">
+							<Radio onChange={this.handleInput} value={this.state.vaccinated} name="vaccinated" label="Vaccinated ?" />
+						</div>
+
+						<div className="col-6">
+							<Radio onChange={this.handleInput} value={this.state.agressive} name="agressive" label="Agressive Habit ?" />
+						</div>
+
+						<div className="col-6">
+							<Radio onChange={this.handleInput} value={this.state.bitten} name="bitten" label="Have they ever bitten a person or animal?" />
+						</div>
+
+						<div className="col-12">
+							<TextArea 
+								placeholder="Message" 
+								onChange={this.handleInput} 
+								value={this.state.message}
+								name="message"
+							/>
+						</div>
+						<div className="col-12">
+							{formValid ? (
+								<button className="button" type="submit">Send</button>
+							) : (
+								<button disabled className="button disabled" type="submit">Send</button>
+							)}
+						</div>
 					</div>
-				</section>
-
-				<section className="py-margin bg-white black-text">
-					<div className="container">
-						<h1 className="page-title align-center my-margin">Our Guarantee</h1>
-
-						<LargeTextBlock 
-							title=""
-							text="The CCPDT and APDT consider dog training guarantees unethical and forbid members to issue them."
-							buttons=""
-							cardStyle=""
-							className="my-4"
-						/>
-
-						<LargeTextBlock 
-							title=""
-							text="What we can guarantee is that we listen to your training goals and create a customized, stress-free and fun plan around your schedule and lifestyle."
-							buttons=""
-							cardStyle=""
-							className="my-4"
-						/>
-
-						<LargeTextBlock 
-							title=""
-							text="We carry out that training plan with your dog, then work with you to protect the results we’ve created. Throughout the program we use only science-based positive reinforcement training methods to work with your dog (instead of against them!) so you feel good about the results you get—and the way we got them."
-							buttons=""
-							cardStyle=""
-							className="my-4"
-						/>
-					</div>
-				</section>
+				</form>
+				</div>
 			</div>
 		);
 	}
 }
 
-export default Contact;
+const mapStoreToProps = (store) => {
+	return {
+		pages : store.pages,
+		page : store.page 
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return actionWrapper({
+		contentfulActions
+	}, dispatch);
+};
+
+
+export default connect(mapStoreToProps, mapDispatchToProps)(Contact);

@@ -1,5 +1,14 @@
 @import '../setup/variables';
 
+p a,
+.p a {
+	color: $main-color;
+	border-bottom: none;
+	&:hover {
+		// border-bottom: 1px solid $main-color;
+	}
+}
+
 .bg-light-blue {
 	background-color: $light-blue;
 }
@@ -26,4 +35,8 @@
 
 .orange-text {
 	color: $main-color;
+}
+
+.white-text {
+	color: $white;
 }

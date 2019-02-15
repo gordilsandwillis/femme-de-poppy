@@ -29,9 +29,6 @@ export class WideImageBlock extends Component {
 		return (
 			<section className={this.sectionClass()}>
 				<div className="container align-center">
-					{this.props.title ? (
-							<p className="h1">{this.props.title}</p>
-					) : false}
 					<div className={this.className()}>
 						<img className="" src={this.props.imageSrc}/>
 					</div>

@@ -10,14 +10,14 @@ import './videogridblock.scss';
 export class VideoGridBlock extends Component {
 
 	componentDidMount () {
-		console.log('this.props ::', this.props);
+		// console.log('this.props ::', this.props);
 	}
 
 	componentWillMount () {
 	}
 
 	className () {
-		let className = 'video-grid';
+		let className = 'video-grid container';
 		if (this.props.cardStyle) {
 			className += ' card';
 		}
@@ -32,13 +32,14 @@ export class VideoGridBlock extends Component {
 		return (
 			<div className={this.className()}>
 				<div className="grid-flex v-spaced center">
-					{this.props.videos.map((video)=>{
+					{this.props.videos.map((video, index)=>{
+						console.log('videogridblock video:', video)
 						return (
-							<div className="col">
+							<div className="col" key={'video-'+index}>
 								<VideoThumb
-									imageSrc={video.imageSrc}
-									videoId={video.videoId}
-									caption={video.caption}
+									imageSrc={"http:"+video.fields.videoThumbnail.fields.file.url}
+									videoId={video.fields.youTubeVideoId}
+									caption={video.fields.videoDescription}
 								/>
 							</div>
 						)

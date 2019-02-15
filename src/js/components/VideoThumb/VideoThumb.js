@@ -8,7 +8,6 @@ import './videothumb.scss';
 export class VideoThumb extends Component {
 
 	componentDidMount () {
-		console.log('this.props ::', this.props);
 	}
 
 	componentWillMount () {

@@ -21,8 +21,8 @@ export class TwoUpImageItem extends Component {
 
 		return (
 			<div className={this.className()}>
-				<img className="" src={this.props.image.imageSrc}/>
-				<p className="md mt-2 align-center">{this.props.image.caption}</p>
+				<img className="" src={'http:'+this.props.image.fields.file.url}/>
+				<p className="md mt-2 align-center">{this.props.image.leftImageCaption}</p>
 			</div>
 		);
 	}

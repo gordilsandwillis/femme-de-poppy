@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
-
 import { Button } from 'gw-ui';
 
 import './largetextblock.scss';
@@ -20,6 +19,9 @@ export class LargeTextBlock extends Component {
 		let className = 'large-text-block';
 		if (this.props.cardStyle) {
 			className += ' card';
+			if (this.props.textColor){
+				className += ' ' + this.props.textColor;
+			}
 		}
 		if (this.props.className) {
 			className += ' ' + this.props.className;
@@ -28,11 +30,43 @@ export class LargeTextBlock extends Component {
 	}
 
 	sectionClass () {
-		let bgClass = 'large-text-section';
-		if (this.props.bgClass) {
-			bgClass += ' '+ this.props.bgClass;
+		let bgClass = 'large-text-section py-4';
+		if (this.props.bgColor) {
+			switch (this.props.bgColor) {
+				case 'Blue':
+					bgClass += ' bg-blue';
+					break;
+
+				case 'Light-Blue':
+					bgClass += ' bg-light-blue';
+					break;
+
+				case 'White':
+					bgClass += ' bg-white';
+					break;
+
+				case 'Grey':
+					bgClass += ' bg-grey';
+					break;	
+			}
 		}
-		return bgClass
+		if (this.props.textColor) {
+			switch (this.props.textColor) {
+				case 'Black':
+					bgClass += ' black-text';
+					break;
+
+				case 'White':
+					bgClass += ' white-text';
+					break;
+
+				case 'Orange':
+					bgClass += ' orange-text';
+					break;
+
+			}
+		}
+		return bgClass;
 	}
 
 	render() {
@@ -41,21 +75,22 @@ export class LargeTextBlock extends Component {
 			<section className={this.sectionClass()}>
 				<div className="container align-center">
 					{this.props.title ? (
-							<p className="h1">{this.props.title}</p>
+							<p className="h1 mb-4"> {this.props.title} </p>
 					) : false}
 					<div className={this.className()}>
 						<div className="grid-flex center align-center">
 							<div className="col">
 								<div className="rich-text">
-									<p className="lg mb-4" dangerouslySetInnerHTML={{ __html: documentToHtmlString(this.props.text) }}></p>
+									<div className="lg mb-4" dangerouslySetInnerHTML={{ __html: documentToHtmlString(this.props.text) }}></div>
 								</div>
 								{this.props.buttons ? (
 									this.props.buttons.map( ( button, index ) => {
+										console.log('BUTTON:', button)
 										return (
 											<Button
 												key={'button-'+index} 
-												label={button.buttonText}
-												className={button.buttonStyle + 'mt-4'}
+												label={button.fields.buttonText}
+												className={button.fields.buttonStyle + ' mt-2'}
 												href={button.buttonLink}
 											/>
 										)

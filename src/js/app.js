@@ -5,7 +5,7 @@ import { StaticRouter, BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import * as contentful from 'contentful'
 import configureStore from './store';
-import Routes from './routes';
+import routes from './routes';
 import Html from 'containers/Html';
 
 import { fetchPages } from 'actions/contentful';
@@ -28,7 +28,7 @@ if (typeof document !== 'undefined') {
   ReactDOM.render(
   	<Provider store={store}>
 	  	<BrowserRouter>
-	  		<Routes />
+	  		{routes}
 	  	</BrowserRouter>
   	</Provider>
 		, document.getElementById('root'));
@@ -40,7 +40,7 @@ export default (locals) => {
 		<StaticRouter location={locals.path} context={{}}>
 			<Html title={locals.title} assets={locals.assets}>
 				<Provider store={store}>
-					<Routes />
+					{routes}
 				</Provider>
 			</Html>
 		</StaticRouter>

@@ -1,182 +1,175 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import actionWrapper from 'redux-action-wrapper';
+import * as contentfulActions from '../../actions/contentful';
+
 
 import LargeTextBlock from '../../components/LargeTextBlock';
 import WideImageBlock from '../../components/WideImageBlock';
 import TwoUpImageBlock from '../../components/TwoUpImageBlock';
 import TestimonialBlock from '../../components/TestimonialBlock';
+import SectionTitleBlock from '../../components/SectionTitleBlock';
+import TrainingSolutionsItem from '../../components/TrainingSolutionsItem';
 
+import { Loader } from 'gw-ui';
 
 import './privatesessions.scss';
 
 class PrivateSessions extends Component {
 
+	state = {
+		loading : true,
+		title : false,
+		blocks : []
+	}
+
+	componentWillMount () {
+
+	}
+
+	componentDidMount () {
+		const { pages, contentfulActions } = this.props;
+		const page = pages.items.find( (page) => page.fields.pageSlug === 'private-sessions');
+		contentfulActions.fetchPage(page.sys.id);
+
+	}
+
+	componentWillReceiveProps (nextProps) {
+		// console.log('nextProps:',nextProps);
+		this.setState({
+			title : nextProps.page.fields.title ? nextProps.page.fields.title : false,
+			blocks : nextProps.page.fields.blocks ? nextProps.page.fields.blocks : false,
+			loading : false
+		});
+	}
+
+	className () {
+		let className = 'large-text-block';
+		if (this.props.cardStyle) {
+			className += ' card';
+			if (this.props.textColor){
+				className += ' ' + this.props.textColor;
+			}
+		}
+		if (this.props.className) {
+			className += ' ' + this.props.className;
+		}
+		return className;
+	}
+
+	sectionBgColor (color) {
+		let bgClass = 'py-margin';
+		
+		switch (color) {
+			case 'Blue':
+				bgClass += ' bg-blue';
+				break;
+
+			case 'Light-Blue':
+				bgClass += ' bg-light-blue';
+				break;
+
+			case 'White':
+				bgClass += ' bg-white';
+				break;
+
+			case 'Grey':
+				bgClass += ' bg-grey';
+				break;	
+		}
+		
+		return bgClass;
+	}
+
 	render() {
-		const leftImage = {
-			imageSrc : 'https://picsum.photos/400/450',
-			caption : 'Left Image Caption',
-			imageSize : false 
-		};
-		const rightImage = {
-			imageSrc : 'https://picsum.photos/400/900',
-			caption : 'Right Image Caption',
-			imageSize : true 
-		};
+
+		if ( this.state.loading ){
+			return <div className="loader-wrap"> <Loader className="large" /> </div>;
+		}
+		console.log('page blocks::::', this.state.blocks);
+
 		console.log('hello about');
 		return (
 			<div>
-				<TwoUpImageBlock
-					title="Customized Training Solutions"
-					leftImage={leftImage}
-					rightImage={rightImage}
-					className="my-4"
-					bgClass="bg-light-blue py-margin"
-				/>
+				{this.state.blocks.map((block, index )=>{
+					if (block.sys.contentType.sys.id == 'largeTextBlock'){
 
-				<section className="py-margin bg-white black-text lola-specialties">
-					<div className="container align-center">
-						<h1 className="section-title my-margin">Lola Dog Specialties & Skills</h1>
-
-						<p className="lg my-2">The basics, like sit and down</p>
-						<p className="lg my-2">The challenges, like come and stay</p>
-						<p className="lg my-2">Easy leash walking</p>
-						<p className="lg my-2">Polite manners around other dogs</p>
-						<p className="lg my-2">Polite manners with people</p>
-						<p className="lg my-2">Barking, jumping, and other impulse issues</p>
-						<p className="lg my-2">Fear and aggression with dogs</p>
-						<p className="lg my-2">Fear and aggression with humans</p>
-					</div>
-				</section>
-
-				<LargeTextBlock 
-					title="What We Offer"
-					text="We always start with an initial consultation from Brian. If Lola Dogs is the correct fit for you & your dog than from there we recommend an upfront commitment of at least a 2–4 week training package depending on case."
-					buttons=""
-					cardStyle=""
-					className="mt-4"
-					bgClass="bg-blue pt-margin"
-				/>
-				<LargeTextBlock 
-					title=""
-					text="Our job is to set you and your dog up for success. We take pride in a selective number of cases at a time in order to provide a high level of personalized attention to achieve maximum results years after our job is done."
-					buttons=""
-					cardStyle=""
-					className=""
-					bgClass="bg-blue"
-				/>
-
-				<LargeTextBlock 
-					title=""
-					text="Initial consultation fee is $175.00 USD."
-					buttons=""
-					cardStyle=""
-					className=""
-					bgClass="bg-blue"
-				/>
-
-				<LargeTextBlock 
-					title="Training Packages"
-					text="We are dedicated to working with you and your dog on training techniques that provide confidence. We provide weekly, monthly and yearly packages with accompanying training videos, problem solving via skype/facetime and additonal support via text message."
-					buttons={[
-						{
-							buttonText: 'Contact Us!',
-							buttonStyle: 'tertiary',
-							buttonLink: '/contact'
-						}
-					]}
-					cardStyle={true}
-					className="my-4 orange"
-					bgClass="bg-blue pb-margin"
-				/>
-				<section className="py-margin">
-					<TestimonialBlock
-						slideshow={[
-							{
-								sys: {
-									id: '1'
-								},
-								fields: {
-									image: {
-										fields:{
-											file: {
-												url: 'picsum.photos/600/400?random'
-											}
-										}
-									},
-									title: 'Slideshow Image 1',
-									category: 'Image 1 Category'
-								}
-							},
-							{
-								sys: {
-									id: '2'
-								},
-								fields: {
-									image: {
-										fields:{
-											file: {
-												url: 'picsum.photos/600/400?random'
-											}
-										}
-									},
-									title: 'Slideshow Image 2',
-									category: 'Image 2 Category'
-								}
-							},
-							{
-								sys: {
-									id: '3'
-								},
-								fields: {
-									image: {
-										fields:{
-											file: {
-												url: 'picsum.photos/600/400?random'
-											}
-										}
-									},
-									title: 'Slideshow Image 3',
-									category: 'Image 3 Category'
-								}
-							},
-							{
-								sys: {
-									id: '4'
-								},
-								fields: {
-									image: {
-										fields:{
-											file: {
-												url: 'picsum.photos/600/400?random'
-											}
-										}
-									},
-									title: 'Slideshow Image 4',
-									category: 'Image 4 Category'
-								}
-							},
-							{
-								sys: {
-									id: '5'
-								},
-								fields: {
-									image: {
-										fields:{
-											file: {
-												url: 'picsum.photos/600/400?random'
-											}
-										}
-									},
-									title: 'Slideshow Image 5',
-									category: 'Image 5 Category'
-								}
-							},
-						]}
-						className="py-margin"
-					/>
-				</section>
+						return (
+							<LargeTextBlock
+								key={'block-'+index}
+								title={ block.fields.title ? block.fields.title : false}
+								text={block.fields.text ? block.fields.text : false}
+								buttons={block.fields.buttons ? block.fields.buttons : false}
+								cardStyle={block.fields.cardStyle}
+								bgColor={block.fields.backgroundColor}
+								textColor={block.fields.textColor}
+							/>
+						)
+					} else if (block.sys.contentType.sys.id == 'twoUpImageBlock'){
+						return (
+							<TwoUpImageBlock
+								key={'block-'+index}
+								leftImage={block.fields.leftImage}
+								rightImage={block.fields.rightImage}
+								bgColor={block.fields.backgroundColor}
+								className="my-4"
+							/>
+						)
+					} else if (block.sys.contentType.sys.id == "trainingSolutionsBlock"){
+						return (
+							<div key={'block-'+index} className={this.sectionBgColor(block.fields.backgroundColor)}>
+								{block.fields.trainingSolutionItems.map((item,index)=> {
+									return (
+										<TrainingSolutionsItem
+											key={"process-"+index}
+											title={item.fields.title}
+											text={item.fields.text}
+											className=""
+											bgColor={block.fields.backgroundColor}
+										/>
+									)
+								})}
+							</div>
+						)
+					} else if (block.sys.contentType.sys.id == "specialtiesAndSkills" ){
+						return (
+							<section key={'block-'+index} className="lola-specialties black-text py-4">
+								<div className="container align-center">
+									<h5 className="h1 black-text mb-4"> {block.fields.title} </h5>
+									{block.fields.specialtiesItems.map((item,index)=> {
+										return (
+											<p key={"specialty-"+index} className="lg my-2"> {item.fields.text} </p>
+										)
+									})}
+								</div>
+							</section>
+						)
+					}  else if (block.sys.contentType.sys.id == "quotesBlock"){
+						return (
+							<TestimonialBlock
+								className="py-margin"
+								slideshow={block.fields.quotes}
+							/>
+						)
+					}
+				})}
 			</div>
 		);
 	}
 }
+const mapStoreToProps = (store) => {
+	return {
+		pages : store.pages,
+		page : store.page 
+	};
+};
 
-export default PrivateSessions;
+const mapDispatchToProps = (dispatch) => {
+	return actionWrapper({
+		contentfulActions
+	}, dispatch);
+};
+
+
+export default connect(mapStoreToProps, mapDispatchToProps)(PrivateSessions);

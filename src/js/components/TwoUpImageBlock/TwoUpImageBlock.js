@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import TwoUpImageItem from '../../components/TwoUpImageItem';
-
-
 // import Button from '../Button';
 
 import './twoupimageblock.scss';
@@ -26,11 +23,46 @@ export class TwoUpImageBlock extends Component {
 	}
 
 	sectionClass () {
-		let bgClass = 'large-text-section';
+		let bgClass = 'two-up-image-section py-1';
 		if (this.props.bgClass) {
 			bgClass += ' '+ this.props.bgClass;
 		}
-		return bgClass
+		if (this.props.bgColor) {
+			switch (this.props.bgColor) {
+				case 'Blue':
+					bgClass += ' bg-blue';
+					break;
+
+				case 'Light-Blue':
+					bgClass += ' bg-light-blue';
+					break;
+
+				case 'White':
+					bgClass += ' bg-white';
+					break;
+
+				case 'Grey':
+					bgClass += ' bg-grey';
+					break;	
+			}
+		}
+		if (this.props.textColor) {
+			switch (this.props.textColor) {
+				case 'Black':
+					bgClass += ' black-text';
+					break;
+
+				case 'White':
+					bgClass += ' white-text';
+					break;
+
+				case 'Orange':
+					bgClass += ' orange-text';
+					break;
+
+			}
+		}
+		return bgClass;
 	}
 
 	render() {
@@ -39,22 +71,18 @@ export class TwoUpImageBlock extends Component {
 			<section className={this.sectionClass()}>
 				<div className="container align-center">	
 					{this.props.title ? (
-							<p className="h1">{this.props.title}</p>
+							<p className="h1"> {this.props.title} </p>
 					) : false}	
 					<div className={this.className()}>
 						<div className="grid-flex v-spaced center gutter-wide">
-							<div className="col">
-								<TwoUpImageItem
-									image={this.props.leftImage}
-									className="blue"
-								/>
+							<div className="col-6">
+								<img className="" src={'http:'+this.props.leftImage.fields.file.url}/>
+								<p className="md mt-2 align-center"> {this.props.leftImage.leftImageCaption} </p>
 							</div>
 
-							<div className="col">
-								<TwoUpImageItem
-									image={this.props.rightImage}
-									className="blue"
-								/>
+							<div className="col-6">
+								<img className="" src={'http:'+this.props.rightImage.fields.file.url}/>
+								<p className="md mt-2 align-center"> {this.props.rightImage.rightImageCaption} </p>
 							</div>
 						</div>
 					</div>

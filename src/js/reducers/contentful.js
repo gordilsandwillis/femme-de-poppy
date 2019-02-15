@@ -10,13 +10,14 @@ import {
 
 const initialState = {
 	site : null,
-	pages : null
+	pages : null,
+	page : null
 }
 
 
 export default (state = initialState, action) => {
 
-	console.log(action);
+	// console.log(action);
 
 	switch (action.type) {
 
@@ -30,9 +31,8 @@ export default (state = initialState, action) => {
 			return {...state, pages: action.payload}
 
 		case PAGE_FOUND: {
-			console.log("PAGE_FOUND");
-			console.log(action.payload);
-
+			
+			return {...state, page: action.payload}
 		}
 
 		default:

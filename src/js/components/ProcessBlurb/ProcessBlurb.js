@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 import './processblurb.scss';
 
@@ -23,8 +24,10 @@ export class ProcessBlurb extends Component {
 
 		return (
 			<div className={this.className()}>
-				<h3>{this.props.title}</h3>
-				<p className="mt-3">{this.props.text}</p>
+				<p className="h3 mb-3"> {this.props.title} </p>
+				<div className="rich-text">
+					<p className="md" dangerouslySetInnerHTML={{ __html: documentToHtmlString(this.props.text) }}></p>
+				</div>
 			</div>
 		);
 	}

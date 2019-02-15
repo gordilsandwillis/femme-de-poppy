@@ -1,15 +1,53 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import actionWrapper from 'redux-action-wrapper';
+import * as contentfulActions from '../../actions/contentful';
 
 import LargeTextBlock from '../../components/LargeTextBlock';
 import WideImageBlock from '../../components/WideImageBlock';
 import VideoGridBlock from '../../components/VideoGridBlock';
 import TestimonialBlock from '../../components/TestimonialBlock';
 
+import { Loader } from 'gw-ui';
+
 import './trainingvideos.scss';
 
 class TrainingVideos extends Component {
 
+	state = {
+		loading : true,
+		title : false,
+		blocks : []
+	}
+
+	componentWillMount () {
+
+	}
+
+	componentDidMount () {
+		const { pages, contentfulActions } = this.props;
+		const page = pages.items.find( (page) => page.fields.pageSlug === 'training-videos');
+		contentfulActions.fetchPage(page.sys.id);
+
+	}
+
+	componentWillReceiveProps (nextProps) {
+		// console.log('nextProps:',nextProps);
+		this.setState({
+			title : nextProps.page.fields.title ? nextProps.page.fields.title : false,
+			blocks : nextProps.page.fields.blocks ? nextProps.page.fields.blocks : false,
+			loading : false
+		});
+	}
+
 	render() {
+
+		if ( this.state.loading ){
+			return <div className="loader-wrap"> <Loader className="large" /> </div>;
+		}
+		console.log('page blocks::::', this.state.blocks);
+
 		const videos = [
 			{
 				imageSrc : "https://picsum.photos/400/300",
@@ -50,122 +88,53 @@ class TrainingVideos extends Component {
 
 		return (
 			<div>
-				<section className="bg-white py-margin">
-					<div className="container">
-						<LargeTextBlock 
-							title="Lola Dogs in action!"
-							text="A sample of the videos we create for clients."
-							buttons=""
-							cardStyle=""
-							className="mt-3"
-							bgClass="bg-white"
-						/>
+				{this.state.blocks.map((block, index )=>{
+					if (block.sys.contentType.sys.id == 'largeTextBlock'){
 
-						<LargeTextBlock 
-							title=""
-							text="Pick up a trick or two for you own canine companion while you watch Lola Dogs enjoying their lessons."
-							buttons=""
-							cardStyle=""
-							className="mb-2"
-							bgClass="bg-white"
-						/>
-
-						<VideoGridBlock
-							videos={videos}
-							className="pt-4"
-						/>
-					</div>
-				</section>
-				<section className="py-margin">
-					<TestimonialBlock
-						slideshow={[
-							{
-								sys: {
-									id: '1'
-								},
-								fields: {
-									image: {
-										fields:{
-											file: {
-												url: 'picsum.photos/600/400?random'
-											}
-										}
-									},
-									title: 'Slideshow Image 1',
-									category: 'Image 1 Category'
-								}
-							},
-							{
-								sys: {
-									id: '2'
-								},
-								fields: {
-									image: {
-										fields:{
-											file: {
-												url: 'picsum.photos/600/400?random'
-											}
-										}
-									},
-									title: 'Slideshow Image 2',
-									category: 'Image 2 Category'
-								}
-							},
-							{
-								sys: {
-									id: '3'
-								},
-								fields: {
-									image: {
-										fields:{
-											file: {
-												url: 'picsum.photos/600/400?random'
-											}
-										}
-									},
-									title: 'Slideshow Image 3',
-									category: 'Image 3 Category'
-								}
-							},
-							{
-								sys: {
-									id: '4'
-								},
-								fields: {
-									image: {
-										fields:{
-											file: {
-												url: 'picsum.photos/600/400?random'
-											}
-										}
-									},
-									title: 'Slideshow Image 4',
-									category: 'Image 4 Category'
-								}
-							},
-							{
-								sys: {
-									id: '5'
-								},
-								fields: {
-									image: {
-										fields:{
-											file: {
-												url: 'picsum.photos/600/400?random'
-											}
-										}
-									},
-									title: 'Slideshow Image 5',
-									category: 'Image 5 Category'
-								}
-							},
-						]}
-						className="py-margin"
-					/>
-				</section>
+						return (
+							<LargeTextBlock
+								key={'block-'+index}
+								title={ block.fields.title ? block.fields.title : false}
+								text={block.fields.text ? block.fields.text : false}
+								buttons={block.fields.buttons ? block.fields.buttons : false}
+								cardStyle={block.fields.cardStyle}
+								bgColor={block.fields.backgroundColor}
+								textColor={block.fields.textColor}
+							/>
+						)
+					} else if (block.sys.contentType.sys.id == "videosBlock"){
+						return (
+							<VideoGridBlock
+								videos={block.fields.videos}
+								className="py-4"
+							/>
+						)
+					}  else if (block.sys.contentType.sys.id == "quotesBlock"){
+						return (
+							<TestimonialBlock
+								className="py-margin"
+								slideshow={block.fields.quotes}
+							/>
+						)
+					}
+				})}
 			</div>
 		);
 	}
 }
 
-export default TrainingVideos;
+const mapStoreToProps = (store) => {
+	return {
+		pages : store.pages,
+		page : store.page 
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return actionWrapper({
+		contentfulActions
+	}, dispatch);
+};
+
+
+export default connect(mapStoreToProps, mapDispatchToProps)(TrainingVideos);
