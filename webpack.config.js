@@ -69,6 +69,14 @@ const config = {
 					]
 				})
 			},
+			{
+        test: /\.(otf|eot|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=fonts/[name].[ext]'
+      },
+      {
+        test: /\.(png|jpg|gif|ico)$/,
+        loader: 'file-loader?name=images/[name].[ext]'
+      }
 
 		]
 	},
