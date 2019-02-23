@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 import { Button } from 'gw-ui';
 
