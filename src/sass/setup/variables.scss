@@ -23,13 +23,13 @@ $base-border-radius : 2px;
 
 // Colors
 $bg-color : #fff;
-$main-color: #ff9700;
+$main-color: #ce948b;
 $black : #000;
 $white : #fff;
 $alert : #DF693D;
 $notify :  #F7C24E;
 $success : #37DCAF;
-$text-color : #5272f7;
+$text-color : #000;
 $light-grey : #FAF8F8;
 $light-text-color : #BFBFBF;
 $light-blue: #d3ecf0;
@@ -52,7 +52,7 @@ $header-height : 40px;
 
 // Typography
 $system-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-$main-font: 'Walsheim', sans-serif;
+$main-font: 'Againts', sans-serif;
 $secondary-font: $system-font;
 $code-font: 'Roboto Mono', monospace;
 $general-font-smoothing : false;
@@ -203,26 +203,26 @@ $btn-font-size: $sm-p-font-size;
 
 // Text Inputs
 $input-font : $main-font;
-$input-font-size : $p-font-size;
+$input-font-size : 2rem;
 $input-letter-spaceing : $p-letter-spacing;
 $input-label-weight : $normal;
 $input-font-weight : $normal;
-$input-bg : transparent;
+$input-bg : $white;
 $input-color : $text-color;
-$input-border : 1px solid darken($hr-color, 10%);
-$input-border-radius : $btn-radius;
+$input-border : 2px solid $white;
+$input-border-radius : 0;
 $input-hover-bg : transparent;
 $input-hover-color : $text-color;
-$input-hover-border : 1px solid darken($main-color, 10%);
+$input-hover-border : 2px solid $text-color;
 $input-focus-bg : transparent;
 $input-focus-color : $text-color;
-$input-focus-border : 1px solid darken($main-color, 5%);
-$placeholder-color : rgba($text-color, .3);
-$placeholder-hover-color : rgba($text-color, .4);
-$placeholder-focus-color : rgba($text-color, .4);
-$input-padding: 0px 1.25em 1px;
+$input-focus-border : 2px solid $text-color;
+$placeholder-color : $text-color;
+$placeholder-hover-color : $main-color;
+$placeholder-focus-color : $text-color;
+$input-padding: 0px .25em 1px;
 $input-text-offset: 3px;
-$input-height: $btn-height;
+$input-height: 1.5rem;
 $input-large-height: $btn-large-height;
 $input-large-font-size: $p-font-size;
 $input-small-height: $btn-small-height;

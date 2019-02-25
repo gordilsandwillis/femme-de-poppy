@@ -3,13 +3,9 @@
 module.exports = {
   paths : [
     '/',
-    '/home',
-    '/about',
-    '/private-sessions',
-    '/training-videos',
-    '/contact'
+    '/home'
   ],
   locals : {
-	  title: 'Lola Dogs',
+	  title: 'Femme de Poppy',
   }
 }

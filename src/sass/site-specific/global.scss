@@ -1,42 +1,112 @@
 @import '../setup/variables';
 
-p a,
-.p a {
-	color: $main-color;
-	border-bottom: none;
+.page-wrap {
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='number'],
+input[type='password'],
+textarea {
+	text-transform: lowercase;
+	letter-spacing: .02em;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='number'],
+input[type='password'] {
+	height: $input-height;
+}
+
+textarea {
+	background: $input-bg !important;
+	border: $input-border;
+	border-radius: $input-border-radius;
+	padding: $input-padding;
+	line-height: calc(#{$input-height} - #{$input-text-offset});
+	color: $input-color;
+	transition: background $md-speed $ease, border $md-speed $ease, color $md-speed $ease, opacity $md-speed $ease;
+	display: block;
+	width: 100%;
+	font-family: $input-font;
+	font-size: $input-font-size;
+	text-align: left;
+	font-weight: $input-font-weight;
+	&::-webkit-input-placeholder {
+		color: $placeholder-color;
+		transition: color $md-speed $ease;
+	}
+	&:-moz-placeholder {
+		color: $placeholder-color;
+		transition: color $md-speed $ease;
+	}
+	&::-moz-placeholder {
+		color: $placeholder-color;
+		transition: color $md-speed $ease;
+	}
+	&:-ms-input-placeholder {
+	   color: $placeholder-color;
+	   transition: color $md-speed $ease;
+	}
 	&:hover {
-		// border-bottom: 1px solid $main-color;
+		background: $input-hover-bg;
+		color: $input-hover-color;
+		border: $input-hover-border;
+		&::-webkit-input-placeholder {
+			color: $placeholder-hover-color;
+		}
+		&:-moz-placeholder {
+			color: $placeholder-hover-color;
+		}
+		&::-moz-placeholder {
+			color: $placeholder-hover-color;
+		}
+		&:-ms-input-placeholder {
+		   color: $placeholder-hover-color;
+		}
+		~ .icon {
+			color: $placeholder-hover-color;
+		}
+	}
+	&:focus {
+		background: $input-focus-bg;
+		color: $input-focus-color;
+		border: $input-focus-border;
+		&::-webkit-input-placeholder {
+			color: $placeholder-focus-color;
+		}
+		&:-moz-placeholder {
+			color: $placeholder-focus-color;
+		}
+		&::-moz-placeholder {
+			color: $placeholder-focus-color;
+		}
+		&:-ms-input-placeholder {
+		   color: $placeholder-focus-color;
+		}
+		~ .icon {
+			color: $input-focus-color;
+		}
 	}
 }
 
-.bg-light-blue {
-	background-color: $light-blue;
-}
-.bg-blue {
-	background-color: $text-color;
-	color: $white;
-}
-
-.bg-grey {
-	background-color: $light-grey;
-}
-
-.bg-white {
-	background-color: $white;
-}
-
-.bg-plum {
-	background-color: plum;
-}
-
-.black-text {
-	color: $black;
-}
-
-.orange-text {
-	color: $main-color;
-}
-
-.white-text {
-	color: $white;
+button {
+	&.unstyled {
+		border: none;
+		background: transparent;
+		box-shadow: none;
+		height: auto;
+		cursor: pointer;
+		&:hover {
+			transform: translate3d(0, -10px, 0);
+			background: transparent !important;
+		}
+	}
 }

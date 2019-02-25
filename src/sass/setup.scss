@@ -1,22 +1,22 @@
 // Setup GW UI
-@import '../../node_modules/gw-ui/dist/sass/reset';
-@import '../../node_modules/gw-ui/dist/sass/variables';
-@import '../../node_modules/gw-ui/dist/sass/mixins';
+@import 'gw-ui/dist/sass/reset';
+@import 'gw-ui/dist/sass/variables';
+@import 'gw-ui/dist/sass/mixins';
 
 // Override GW UI Defaults
 @import 'setup/variables';
 @import 'setup/fonts';
 
-@import '../../node_modules/gw-ui/dist/sass/base';
-@import '../../node_modules/gw-ui/dist/sass/grid';
-@import '../../node_modules/gw-ui/dist/sass/typography';
-@import '../../node_modules/gw-ui/dist/sass/spacing';
+@import 'gw-ui/dist/sass/base';
+@import 'gw-ui/dist/sass/grid';
+@import 'gw-ui/dist/sass/typography';
+@import 'gw-ui/dist/sass/spacing';
 
-@import '../../node_modules/gw-ui/dist/sass/icons';
-@import '../../node_modules/gw-ui/dist/sass/animations';
+@import 'gw-ui/dist/sass/icons';
+@import 'gw-ui/dist/sass/animations';
 
-@import '../../node_modules/gw-ui/dist/Button';
-@import '../../node_modules/gw-ui/dist/Input';
+@import 'gw-ui/dist/Button';
+@import 'gw-ui/dist/Input';
 
 // Site Specific
 // @import 'setup/global';

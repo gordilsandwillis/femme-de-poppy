@@ -1,0 +1,384 @@
+@import '../../../sass/setup/variables';
+@import 'gw-ui/dist/sass/mixins';
+
+$unfold-speed : .7s;
+
+.temp-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 200;
+}
+
+img {
+	display: block;
+}
+
+.page-view {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+	transform: scale(1.1) rotate(-2deg);
+	transition: opacity $md-speed $unfold-speed * 1.1 $ease, visibility $md-speed $unfold-speed * 1.1 $ease, transform $unfold-speed $unfold-speed * .8 $ease;
+	&.open {
+		opacity: 1;
+		visibility: visible;
+		transform: none;
+		transition: opacity $md-speed $ease, visibility $md-speed $ease, transform $unfold-speed $ease;
+		.view-bg {
+			.walls {
+				.left img { 
+					transform: rotateY(40deg) scale(.75, 1);
+					transition: transform $unfold-speed $ease;
+				}
+				.right img { 
+					transform: rotateY(-40deg) scale(.75, 1);
+					transition: transform $unfold-speed $ease;
+				}
+			}
+			.ceiling,
+			.floor {
+				transform: none;
+				transition: transform $unfold-speed .4s $ease;
+			}
+		}
+		.view-title,
+		.close-x {
+			transform: none;
+			opacity: 1;
+			transition: transform $unfold-speed $unfold-speed $ease;
+		}
+		.view-content .element-1 {
+			transform: none;
+			opacity: 1;
+			transition: transform $unfold-speed ($unfold-speed * 1.5) $ease, opacity $unfold-speed ($unfold-speed * 1.5) $ease;
+		}
+		.view-content .element-2 {
+			transform: none;
+			opacity: 1;
+			transition: transform $unfold-speed ($unfold-speed * 1.75) $ease, opacity $unfold-speed ($unfold-speed * 1.75) $ease;
+		}
+		.view-content .element-3 {
+			transform: none;
+			opacity: 1;
+			transition: transform $unfold-speed ($unfold-speed * 2) $ease, opacity $unfold-speed ($unfold-speed * 2) $ease;
+		}
+		.view-content .element-4 {
+			transform: none;
+			opacity: 1;
+			transition: transform $unfold-speed ($unfold-speed * 2.25) $ease, opacity $unfold-speed ($unfold-speed * 2.25) $ease;
+		}
+	}
+	.view-title {
+		position: absolute;
+		top: 0;
+		left: 5%;
+		right: 5%;
+		z-index: 3;
+		text-align: center;
+		transform: translate3d(0, -100%, 0) scale(1.1);
+		transition: transform $unfold-speed $ease;
+		img {
+			vertical-align: top;
+			max-width: 70%;
+			max-height: 30vh;
+		}
+	}
+	.view-bg {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 1;
+		@include respond-smaller-than($xlg) {
+			width: 150%;
+			margin-left: -25%;
+		}
+		.walls {
+			width: 100%;
+			transform-style: preserve-3d;
+			perspective: 200px;
+			display: flex;
+			position: relative;
+			z-index: -1;
+			@include respond($xlg) {
+				perspective: 600px;
+			}
+			img {
+				display: block;
+				width: 100%;
+			}
+			.left {
+				flex-grow: 1;
+				@include respond-smaller-than($xlg) {
+					width: 50%;
+				}
+				img {
+					transition: transform $unfold-speed .4s $ease;
+					float: right;
+					height: 100%;
+					opacity: 1;
+					transform-origin: 100% 50%;
+					transform: rotateY(179deg);
+				}
+			}
+			.center {
+				width: 50%;
+				flex-grow: 0;
+				flex-shrink: 0;
+				@include respond($xlg) {
+					width: 50%;
+				}
+			}
+			.right {
+				flex-grow: 1;
+				@include respond-smaller-than($xlg) {
+					width: 50%;
+				}
+				img {
+					transition: transform $slow-speed .4s $ease;
+					height: 100%;
+					opacity: 1;
+					float: left;
+					transform-origin: 0% 50%;
+					transform: rotateY(-179deg);
+				}
+			}
+		}
+		.ceiling {
+			position: absolute;
+			z-index: -2;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 50%;
+			transition: transform $unfold-speed $ease;
+			transform: translate3d(0, -100%, 0);
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center top;
+			}
+		}
+		.floor {
+			position: absolute;
+			z-index: -2;
+			left: 0;
+			right: 0;
+			top: 50%;
+			bottom: 0;
+			transition: transform $unfold-speed $ease;
+			transform: translate3d(0, 100%, 0);
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center bottom;
+			}
+		}
+	}
+	.view-content {}
+	.close-x {
+		position: absolute;
+		bottom: 5%;
+		right: 10%;
+		z-index: 6;
+		transform: translate3d(0, 400%, 0) scale(.7);
+		transition: transform $unfold-speed $ease;
+		img {
+			display: block;
+		}
+		@include respond-smaller-than($md) {
+			width: 70px;
+		}
+		.x {
+			position: relative;
+			z-index: 3;
+		}
+		.shadow {
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			left: 0;
+		}
+	}
+	.view-content {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		* {
+			pointer-events: all;
+		}
+		.center-content {
+			text-align: center;
+			padding: 7%;
+			position: absolute;
+			top: 100px;
+			bottom: 100px;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.element-1,
+		.element-2,
+		.element-3,
+		.element-4 {
+			opacity: 0;
+			transform: translate3d(0, 3rem, 0);
+			transition: transform $md-speed $ease, opacity $md-speed $ease;
+		}
+	}
+	&.about {
+		.close-x {
+			bottom: 0;
+			@include respond($xlg) {
+				right: 30%;
+			}
+		}
+		.box {
+			position: absolute;
+			bottom: 0;
+			width: 70%;
+			max-width: 400px;
+			left: -10%;
+			@include respond($md) {
+				width: 30%;
+				left: 20%;
+			}
+			img {
+				width: 100%;
+			}
+		}
+	}
+	&.contact {
+		.close-x {
+			bottom: 0;
+			right: 30%;
+			@include respond($xlg) {
+				right: 30%;
+			}
+		}
+		form {
+			width: 80%;
+			margin: 0 auto;
+			max-width: 600px;
+			@include respond($md) {
+				width: 70%;
+			}
+			@include respond($xlg) {
+				width: 45%;
+			}
+		}
+	}
+	&.buy {
+		.close-x {
+			bottom: 0;
+		}
+		.text {
+			color: #e84079;
+			font-size: 2.5rem;
+			line-height: 1.5em;
+			text-align: left;
+			display: inline-block;
+			position: relative;
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: -4rem;
+				right: -1rem;
+				bottom: -3rem;
+				left: -7rem;
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				background: url('../../../assets/images/buy-text-bg.png');
+				z-index: 0;
+			}
+			p {
+				max-width: 7em;
+				font-size: 1em;
+				position: relative;
+				z-index: 1;
+			}
+			@include respond($lg) {
+				font-size: 3rem;
+			}
+		}
+		.floor {
+			&:after {
+				content: '';
+				display: block;
+				height: 30%;
+				position: absolute;
+				pointer-events: none;
+				background-image: url('../../../assets/images/buy-shadow.png');
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				background-size: contain;
+				z-index: 2;
+				bottom: 0;
+				left: 0;
+				right: 40%;
+			}
+		}
+	}
+	&.poppy {
+		.close-x {
+			right: 10px;
+		}
+		.view-content {
+			.text {
+				p {
+					margin: 0 auto;
+					font-size: 1.5rem;
+					line-height: 1.5em;
+					max-width: 10em;
+					@include respond($md) {
+						font-size: 2.5rem;
+					}
+					@include respond($xlg) {
+						font-size: 3.5vw;
+					}
+				}
+			}
+			.poppy-figure {
+				position: absolute;
+				bottom: 10%;
+				left: 5%;
+				width: 20%;
+				max-width: 250px;
+				@include respond($xlg) {
+					width: 25%;
+				}
+				@include respond($xlg) {
+					left: 10%;
+				}
+				img {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
