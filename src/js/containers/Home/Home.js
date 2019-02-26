@@ -48,7 +48,7 @@ import ContactClose from 'assets/images/contact-x.png';
 class Home extends Component {
 
 	state = {
-		pageView : 'buy'
+		pageView : 'home'
 	}
 
 	componentWillMount () {
