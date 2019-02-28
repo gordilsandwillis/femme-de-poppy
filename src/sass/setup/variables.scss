@@ -22,7 +22,7 @@ $gutter-wide: $gutter * 2;
 $base-border-radius : 2px;
 
 // Colors
-$bg-color : #fff;
+$bg-color : #1d141a;
 $main-color: #ce948b;
 $black : #000;
 $white : #fff;
@@ -55,7 +55,7 @@ $system-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans
 $main-font: 'Againts', sans-serif;
 $secondary-font: $system-font;
 $code-font: 'Roboto Mono', monospace;
-$general-font-smoothing : false;
+$general-font-smoothing : true;
 $code-font-smoothing : false;
 $base-line-height : 1.25em;
 $base-letter-spacing : 0;
@@ -267,7 +267,7 @@ $tooltip-height: 26px;
 $sm : 450;
 $md : 600;
 $lg : 850;
-$xlg : 1020;
+$xlg : 900;
 $huge : 1500;
 
 // Transitions

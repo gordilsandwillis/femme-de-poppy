@@ -4,6 +4,16 @@ import './home.scss';
 
 import PageView from 'components/PageView';
 
+
+// Home Images
+import Lipstick1 from 'assets/images/lipstick-1.png';
+import Lipstick2 from 'assets/images/lipstick-2.png';
+import Lipstick3 from 'assets/images/lipstick-3.png';
+import Lipstick4 from 'assets/images/lipstick-4.png';
+
+import FemmeNeon from 'assets/images/femme-neon.png';
+import FemmeGlow from 'assets/images/femme-neon-glow.png';
+
 // Poppy Images
 import PoppyTitle from 'assets/images/poppy-title.png';
 import PoppyWallLeft from 'assets/images/poppy-wall-center.png';
@@ -16,10 +26,12 @@ import PoppyFloor from 'assets/images/contact-cieling.png';
 
 // About Images
 import AboutTitle from 'assets/images/about-title.png';
-import AboutWallLeft from 'assets/images/about-wall-left.png';
-import AboutWallCenter from 'assets/images/about-wall-center.png';
-import AboutWallRight from 'assets/images/about-wall-right.png';
-import AboutFloor from 'assets/images/contact-cieling.png'; // the about floor is fucked
+// import AboutWallLeft from 'assets/images/about-wall-left.png';
+// import AboutWallCenter from 'assets/images/about-wall-center.png';
+import AboutWallCenter from 'assets/images/about-wall-left.png';
+import AboutWallRight from 'assets/images/about-wall-center.png';
+import AboutWallLeft from 'assets/images/about-wall-right.png';
+import AboutFloor from 'assets/images/about-floor.png'; // the about floor is fucked
 import AboutClose from 'assets/images/contact-x.png';
 	// Content Images
 	import AboutBox from 'assets/images/about-box.png';
@@ -85,11 +97,15 @@ class Home extends Component {
 		return (
 
 			<div className={this.getClassName()}>
-				<div className="temp-nav">
-					<div onClick={() => this.setPageView('about')}>about</div>
-					<div onClick={() => this.setPageView('buy')}>buy</div>
-					<div onClick={() => this.setPageView('contact')}>contact</div>
-					<div onClick={() => this.setPageView('poppy')}>poppy</div>
+				<div className="home-view">
+					<div className="neon-wrap">
+						<img className="neon" src={FemmeNeon} />
+						<img className="glow" src={FemmeGlow} />
+					</div>
+					<a className="lipstick ls-1" onClick={() => this.setPageView('about')} title="About"><img src={Lipstick1} /></a>
+					<a className="lipstick ls-2" onClick={() => this.setPageView('buy')} title="Buy"><img src={Lipstick2} /></a>
+					<a className="lipstick ls-3" onClick={() => this.setPageView('contact')} title="Contact"><img src={Lipstick3} /></a>
+					<a className="lipstick ls-4" onClick={() => this.setPageView('poppy')} title="Poppy King"><img src={Lipstick4} /></a>
 				</div>
 
 				<PageView
@@ -135,8 +151,9 @@ class Home extends Component {
 						<div className="poppy-figure element-2"><img src={PoppyFigure} /></div>
 						<div className="center-content text element-1">
 							<div>
-								<p>Poppy King is the lipstick queen. New York. Filler Text Femme de Poppy new lipstick Barney's New York de Poppy Lipstick from New York New</p>
-								<p>Poppy xo</p>
+								<p>Since the age of eighteen, Poppys vision of lipstick as artifact and her understanding of its power to transform have led her to design intelligent, glamorous, and surprising lipsticks as nuanced in formula as they are in look and feel.</p>
+								<p>Now, The woman behind the cult hits Medieval, Frog Prince, and Hello Sailor is taking her obsession further, with her first entirely self-financed, unfiltered brand “Femme de Poppy.” </p>
+								<p className="mb-0">Poppy xo</p>
 							</div>
 						</div>
 					</div>
@@ -153,7 +170,13 @@ class Home extends Component {
 					closeView={this.returnHome}
 					closeButton={AboutClose}
 				>
-					<div className="box element-1"><img src={AboutBox}/></div>
+					<div className="box element-2"><img src={AboutBox}/></div>
+					<div className="center-content text element-1">
+						<div>
+							<p>Welcome to Femme de Poppy, Poppy King’s latest specialty lipstick brand. inspired by the archetypal figures Joan of Arc and Helen of Troy, Poppy continues with her quest to make lipstick into the intelligent, powerful, wearable, feminist product she has always imagined it to be.</p>
+							<p>Available exclusively at Barneys, Femme de Poppy will be creating a new, limited-edition lipstick every month—each one a curated experience and a story unto itself. Designed with Unusual finishes, textures, and effects, the launch collection features three matte formulas that work with your lips to blossom into their full color potential and to provide a truely luxurious feel. Apply, wait, and watch your own body heat transform the lipstick into a luscious, never-before-seen variation of matte.</p>
+						</div>
+					</div>
 				</PageView>
 
 				<PageView
