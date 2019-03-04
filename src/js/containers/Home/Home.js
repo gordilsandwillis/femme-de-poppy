@@ -103,9 +103,9 @@ class Home extends Component {
 						<img className="glow" src={FemmeGlow} />
 					</div>
 					<a className="lipstick ls-1" onClick={() => this.setPageView('about')} title="About"><img src={Lipstick1} /></a>
-					<a className="lipstick ls-2" onClick={() => this.setPageView('buy')} title="Buy"><img src={Lipstick2} /></a>
+					<a className="lipstick ls-2" onClick={() => this.setPageView('poppy')} title="Poppy King"><img src={Lipstick2} /></a>
 					<a className="lipstick ls-3" onClick={() => this.setPageView('contact')} title="Contact"><img src={Lipstick3} /></a>
-					<a className="lipstick ls-4" onClick={() => this.setPageView('poppy')} title="Poppy King"><img src={Lipstick4} /></a>
+					<a className="lipstick ls-4" onClick={() => this.setPageView('buy')} title="buy"><img src={Lipstick4} /></a>
 				</div>
 
 				<PageView
@@ -128,9 +128,9 @@ class Home extends Component {
 									</div>
 								</div>
 								<div className="col-6">
-									<div className="image">
+									<a href="https://www.barneys.com/designer/new-arrivals/femme-de-poppy/N-1109flhZ1dgswa1" target="_blank" className="image">
 										<img src={BuyBarneys} />
-									</div>
+									</a>
 								</div>
 							</div>
 						</div>
@@ -151,9 +151,8 @@ class Home extends Component {
 						<div className="poppy-figure element-2"><img src={PoppyFigure} /></div>
 						<div className="center-content text element-1">
 							<div>
-								<p>Since the age of eighteen, Poppys vision of lipstick as artifact and her understanding of its power to transform have led her to design intelligent, glamorous, and surprising lipsticks as nuanced in formula as they are in look and feel.</p>
-								<p>Now, The woman behind the cult hits Medieval, Frog Prince, and Hello Sailor is taking her obsession further, with her first entirely self-financed, unfiltered brand “Femme de Poppy.” </p>
-								<p className="mb-0">Poppy xo</p>
+								<p>Believing that lipstick is more than simply cosmetic, that it doesn’t just change how you look but also how you feel, Poppy King has been ideating and bringing to market cult lipsticks since the age of 18.</p>
+								<p>“With Femme de Poppy I wanted to design a lipstick that goes on with full traction precision (no lip liner needed!) then warms up with your body heat to bloom into a luscious, long lasting formula like a second skin.”</p>
 							</div>
 						</div>
 					</div>
@@ -173,8 +172,10 @@ class Home extends Component {
 					<div className="box element-2"><img src={AboutBox}/></div>
 					<div className="center-content text element-1">
 						<div>
-							<p>Welcome to Femme de Poppy, Poppy King’s latest specialty lipstick brand. inspired by the archetypal figures Joan of Arc and Helen of Troy, Poppy continues with her quest to make lipstick into the intelligent, powerful, wearable, feminist product she has always imagined it to be.</p>
-							<p>Available exclusively at Barneys, Femme de Poppy will be creating a new, limited-edition lipstick every month—each one a curated experience and a story unto itself. Designed with Unusual finishes, textures, and effects, the launch collection features three matte formulas that work with your lips to blossom into their full color potential and to provide a truely luxurious feel. Apply, wait, and watch your own body heat transform the lipstick into a luscious, never-before-seen variation of matte.</p>
+							<p>A specialty lipstick brand inspired by the complexity of female figures such Joan of Arc and Helen of Troy, created by lipstick entrepreneur Poppy King. Expertly designed shades, each with a unique story:</p>
+							<p>EVE — A delightfully naughty but wearable take on red with an iridescent snakeskin-like finish that molds to your lips.</p>
+							<p>LIP EN ROSE — Matte yet dewy wash of flattering rose that is buildable into a range of strengths.</p>
+							<p>EMPERORS NUDE — Peachy golden sheer matte with a touch of golden shimmer for a faux real nude look.</p>
 						</div>
 					</div>
 				</PageView>
@@ -192,13 +193,20 @@ class Home extends Component {
 				>
 					<div>
 						<div className="center-content form">
+							{/* Hook up form to poppy@poppyking.com when going live */}
 							<form action="https://formspree.io/matt@gordilsandwillis.com" method="POST">
 								<div className="element-1 pb-1px">
 									<div className="grid-flex gutter-tight v-spaced">
 										<div className="col-6"><input type="text" name="name" placeholder="NAME"/></div>
 										<div className="col-6"><input type="text" name="phone" placeholder="PHONE"/></div>
 										<div className="col-12"><input type="email" name="email" placeholder="EMAIL"/></div>
-										<div className="col-12"><input type="text" name="Inquiry type" placeholder="INQUIRY TYPE"/></div>
+										<div className="col-12">
+											<select name="Inquiry type">
+												<option value="general">GENERAL</option>
+												<option value="general">PRESS</option>
+												<option value="general">RETAIL</option>
+											</select>
+										</div>
 										<div className="col-12"><textarea name="message" rows="4" resize="false" placeholder="MESSAGE..." /></div>
 									</div>
 								</div>

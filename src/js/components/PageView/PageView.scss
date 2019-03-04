@@ -221,9 +221,9 @@ img {
 				}
 				img {
 					transition: transform $unfold-speed .4s $ease;
-					float: right;
 					height: 100%;
 					opacity: 1;
+					float: right;
 					transform-origin: 100% 50%;
 					transform: rotateY(179deg);
 				}
@@ -254,7 +254,7 @@ img {
 		}
 		.ceiling {
 			position: absolute;
-			z-index: -2;
+			z-index: -3;
 			left: 0;
 			right: 0;
 			top: 0;
@@ -273,7 +273,7 @@ img {
 		}
 		.floor {
 			position: absolute;
-			z-index: -2;
+			z-index: -3;
 			left: 0;
 			right: 0;
 			top: 50%;
@@ -360,17 +360,13 @@ img {
 				margin-left: auto;
 				margin-right: auto;
 				font-size: .8rem;
-				font-size: 3vw;
+				font-size: 3.25vw;
 				line-height: 1.3em;
-				max-width: 20em;
+				max-width: 18em;
 				text-transform: lowercase;
 				margin: $space-2 auto;
-				@include respond($md) {
-					// font-size: 1.75rem;
-					font-size: 3vw;
-				}
-				@include respond($lg) {
-					font-size: 2vw;
+				@include respond($xlg) {
+					font-size: 2.5vw;
 				}
 			}
 		}
@@ -464,26 +460,20 @@ img {
 	}
 	&.poppy {
 		.close-x {
-			right: 10px;
+			right: 14%;
 		}
 		.view-content {
 			.text {
 				p {
 					margin-left: auto;
 					margin-right: auto;
-					font-size: 1rem;
+					font-size: 4vw;
 					line-height: 1.3em;
-					max-width: 16em;
+					max-width: 15em;
 					text-transform: lowercase;
 					margin: $space-2 auto;
-					@include respond($sm) {
-						font-size: 1.25rem;
-					}
-					@include respond($md) {
-						font-size: 1.75rem;
-					}
-					@include respond($lg) {
-						font-size: 2rem;
+					@include respond($xlg) {
+						font-size: 3vw;
 					}
 				}
 			}
