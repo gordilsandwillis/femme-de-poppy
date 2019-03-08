@@ -226,14 +226,18 @@ img {
 					float: right;
 					transform-origin: 100% 50%;
 					transform: rotateY(179deg);
+					@include respond($xlg) {
+						max-height: 597px;
+					}
 				}
 			}
 			.center {
-				width: 50%;
+				width: 44%;
 				flex-grow: 0;
 				flex-shrink: 0;
 				@include respond($xlg) {
 					width: 50%;
+					max-width: 700px;
 				}
 			}
 			.right {
@@ -249,6 +253,9 @@ img {
 					float: left;
 					transform-origin: 0% 50%;
 					transform: rotateY(-179deg);
+					@include respond($xlg) {
+						max-height: 597px;
+					}
 				}
 			}
 		}
@@ -368,14 +375,17 @@ img {
 				@include respond($xlg) {
 					font-size: 2.5vw;
 				}
+				@include respond(1300) {
+					font-size: 2rem;
+				}
 			}
 		}
 		.box {
 			position: absolute;
-			bottom: 0;
-			width: 70%;
-			max-width: 400px;
-			left: -10%;
+	    bottom: -3%;
+	    width: 62%;
+	    max-width: 400px;
+	    left: -20%;
 			@include respond($md) {
 				width: 30%;
 				left: 4%;
@@ -416,28 +426,57 @@ img {
 			text-align: left;
 			display: inline-block;
 			position: relative;
+			text-align: center;
+			padding: 4em 0;
+			margin-bottom: -8rem;
+			@include respond($md) {
+				text-align: left;
+				font-size: 3rem;
+				padding: 5em 0;
+				margin-bottom: 0;
+			}
 			&:after {
 				content: '';
 				display: block;
 				position: absolute;
-				top: -4rem;
-				right: -1rem;
-				bottom: -3rem;
-				left: -7rem;
+				top: 2em;
+		    right: -1.5em;
+		    bottom: 1.5em;
+		    left: -2.5em;
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
-				background: url('../../../assets/images/buy-text-bg.png');
+				background-image: url('../../../assets/images/buy-text-bg.png');
 				z-index: 0;
+				@include respond($md) {
+					top: 2em;
+			    right: -1.5em;
+			    bottom: 1.5em;
+			    left: -2em;
+				}
 			}
 			p {
-				max-width: 7em;
+				max-width: 6em;
 				font-size: 1em;
 				position: relative;
 				z-index: 1;
 			}
+		}
+		.logo {
+			position: relative;
+			z-index: 2;
+			display: block;
+			width: 60%;
+			margin: 0 auto;
+			transition: transform $md-speed $ease;
 			@include respond($lg) {
-				font-size: 3rem;
+				width: 75%;
+			}
+			@include respond($xlg) {
+				width: auto;
+				&:hover {
+					transform: scale(1.1);
+				}
 			}
 		}
 		.floor {
@@ -474,6 +513,9 @@ img {
 					margin: $space-2 auto;
 					@include respond($xlg) {
 						font-size: 3vw;
+					}
+					@include respond(1300) {
+						font-size: 2.5rem;
 					}
 				}
 			}

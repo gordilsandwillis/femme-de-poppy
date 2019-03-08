@@ -16,9 +16,9 @@ import FemmeGlow from 'assets/images/femme-neon-glow.png';
 
 // Poppy Images
 import PoppyTitle from 'assets/images/poppy-title.png';
-import PoppyWallLeft from 'assets/images/poppy-wall-center.png';
-import PoppyWallCenter from 'assets/images/poppy-wall-center.png';
-import PoppyWallRight from 'assets/images/poppy-wall-right.png';
+import PoppyWallLeft from 'assets/images/poppy-wall-center.jpg';
+import PoppyWallCenter from 'assets/images/poppy-wall-center.jpg';
+import PoppyWallRight from 'assets/images/poppy-wall-right.jpg';
 import PoppyCieling from 'assets/images/contact-cieling.png';
 import PoppyFloor from 'assets/images/contact-cieling.png';
 	// Content Images
@@ -26,12 +26,10 @@ import PoppyFloor from 'assets/images/contact-cieling.png';
 
 // About Images
 import AboutTitle from 'assets/images/about-title.png';
-// import AboutWallLeft from 'assets/images/about-wall-left.png';
-// import AboutWallCenter from 'assets/images/about-wall-center.png';
 import AboutWallCenter from 'assets/images/about-wall-left.png';
 import AboutWallRight from 'assets/images/about-wall-center.png';
 import AboutWallLeft from 'assets/images/about-wall-right.png';
-import AboutFloor from 'assets/images/about-floor.png'; // the about floor is fucked
+import AboutFloor from 'assets/images/about-floor.jpg'; // the about floor is fucked
 import AboutClose from 'assets/images/contact-x.png';
 	// Content Images
 	import AboutBox from 'assets/images/about-box.png';
@@ -121,14 +119,15 @@ class Home extends Component {
 				>
 					<div className="center-content">
 						<div>
-							<div className="grid-flex middle">
+							<div className="grid-flex middle gutter-wide">
 								<div className="col-6">
 									<div className="text">
-										<p>Femme de poppy is available for purchase exclusively at Barneys New York</p>
+										<p className="hide-md">Femme de poppy is available for purchase exclusively at Barneys New York</p>
+										<p className="show-md">Exclusively at Barneys New York</p>
 									</div>
 								</div>
 								<div className="col-6">
-									<a href="https://www.barneys.com/designer/new-arrivals/femme-de-poppy/N-1109flhZ1dgswa1" target="_blank" className="image">
+									<a className="logo image" href="https://www.barneys.com/designer/new-arrivals/femme-de-poppy/N-1109flhZ1dgswa1" target="_blank">
 										<img src={BuyBarneys} />
 									</a>
 								</div>

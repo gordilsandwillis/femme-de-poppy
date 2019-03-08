@@ -1,5 +1,15 @@
 @import '../setup/variables';
 
+html,
+body,
+input,
+textarea,
+button {
+	@include respond($huge) {
+		font-size: $base-font-size;
+	}
+}
+
 .page-wrap {
 	overflow: hidden;
 	position: fixed;
@@ -24,6 +34,7 @@ input[type='email'],
 input[type='number'],
 input[type='password'] {
 	height: $input-height;
+	line-height: $input-height;
 }
 
 textarea {
