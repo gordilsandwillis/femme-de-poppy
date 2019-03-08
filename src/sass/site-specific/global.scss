@@ -27,14 +27,16 @@ textarea,
 select {
 	text-transform: lowercase;
 	letter-spacing: .02em;
+	line-height: 1em;
 }
 
 input[type='text'],
 input[type='email'],
 input[type='number'],
-input[type='password'] {
+input[type='password'],
+select {
 	height: $input-height;
-	line-height: $input-height;
+	line-height: 1em;
 }
 
 textarea {

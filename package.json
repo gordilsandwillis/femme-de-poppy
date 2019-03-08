@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development node index",
-    "build": "webpack --mode=production --progress --colors"
+    "build": "webpack --mode=production"
   },
   "author": "@robincwillis",
   "license": "ISC",
