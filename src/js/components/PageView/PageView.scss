@@ -127,11 +127,11 @@ img {
 		.view-bg {
 			.walls {
 				.left img { 
-					transform: rotateY(40deg) scale(.75, 1);
+					transform: rotateY(70deg) scale(.75, 1);
 					transition: transform $unfold-speed $ease;
 				}
 				.right img { 
-					transform: rotateY(-40deg) scale(.75, 1);
+					transform: rotateY(-70deg) scale(.75, 1);
 					transition: transform $unfold-speed $ease;
 				}
 			}
@@ -179,8 +179,8 @@ img {
 		transition: transform $unfold-speed $ease;
 		img {
 			vertical-align: top;
-			max-width: 70%;
-			max-height: 30vh;
+			// max-width: 70%;
+			max-height: 23vh;
 		}
 	}
 	.view-bg {
@@ -207,7 +207,7 @@ img {
 			position: relative;
 			z-index: -1;
 			@include respond($xlg) {
-				perspective: 600px;
+				perspective: 58vw;
 			}
 			img {
 				display: block;
@@ -235,8 +235,9 @@ img {
 				width: 50%;
 				flex-grow: 0;
 				flex-shrink: 0;
+				margin: 0 -2px;
 				@include respond($xlg) {
-					width: 50%;
+					width: 39%;
 					max-width: 700px;
 				}
 			}
@@ -373,9 +374,9 @@ img {
 				text-transform: lowercase;
 				margin: $space-2 auto;
 				@include respond($xlg) {
-					font-size: 2.5vw;
+					font-size: 2vw;
 				}
-				@include respond(1300) {
+				@include respond($huge) {
 					font-size: 2rem;
 				}
 			}
@@ -388,7 +389,7 @@ img {
 	    left: -20%;
 			@include respond($md) {
 				width: 30%;
-				left: 4%;
+				left: 1rem;
 			}
 			img {
 				width: 100%;
@@ -403,21 +404,31 @@ img {
 				right: 30%;
 			}
 		}
+		.view-title {
+			img {
+				max-height: 20vh;
+			}
+		}
 		form {
 			width: 80%;
 			margin: 0 auto;
-			max-width: 600px;
+			max-width: 500px;
 			@include respond($md) {
 				width: 70%;
 			}
 			@include respond($xlg) {
-				width: 45%;
+				width: 42%;
 			}
 		}
 	}
 	&.buy {
 		.close-x {
 			bottom: 0;
+		}
+		.view-title {
+			img {
+				max-height: 29vh;
+			}
 		}
 		.text {
 			color: #e84079;
@@ -499,7 +510,16 @@ img {
 	}
 	&.poppy {
 		.close-x {
-			right: 14%;
+			right: 26%;
+			bottom: 4%;
+		}
+		.view-title {
+			@include respond-smaller-than($md) {
+				top: 4%;
+			}
+			img {
+				max-height: 32vh;
+			}
 		}
 		.view-content {
 			.text {
@@ -512,9 +532,9 @@ img {
 					text-transform: lowercase;
 					margin: $space-2 auto;
 					@include respond($xlg) {
-						font-size: 3vw;
+						font-size: 2.3vw;
 					}
-					@include respond(1300) {
+					@include respond($huge) {
 						font-size: 2.5rem;
 					}
 				}
@@ -523,13 +543,14 @@ img {
 				position: absolute;
 				bottom: 5%;
 				left: 2%;
-				width: 15%;
-				max-width: 250px;
+				width: 25%;
+				max-width: 150px;
 				
-				@include respond($xlg + 200) {
-					left: 2%;
+				@include respond($xlg) {
+					left: 4%;
 					bottom: 5%;
 					width: 20%;
+					max-width: 250px;
 				}
 				@include respond($huge) {
 					left: 5%;

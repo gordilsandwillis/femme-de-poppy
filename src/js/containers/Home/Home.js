@@ -126,7 +126,7 @@ class Home extends Component {
 										<p className="show-md">Exclusively at Barneys New York</p>
 									</div>
 								</div>
-								<div className="col-6">
+								<div className="col-6 pt-2">
 									<a className="logo image" href="https://www.barneys.com/designer/new-arrivals/femme-de-poppy/N-1109flhZ1dgswa1" target="_blank">
 										<img src={BuyBarneys} />
 									</a>
