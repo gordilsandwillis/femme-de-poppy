@@ -4,31 +4,22 @@
 $unfold-speed : .7s;
 
 @keyframes neon {
-	0%, 100% {
-		opacity: 50%;
+	0%, 35%, 50%, 100% {
+		opacity: .5;
 	}
-	30% {
-		opacity: 100%;
+	30%, 47%, 52%, 70% {
+		opacity: 1;
 	}
 }
 
 @keyframes glow {
-	100% {
-		transform: rotate(360deg);
+	0%, 35%, 50%, 100% {
+		opacity: 0;
 	}
-	50% {
-		transform: rotate(-360deg);
+	30%, 47%, 52%, 70% {
+		opacity: 1;
 	}
 }
-
-// @keyframes glow {
-// 	0%, 100% {
-// 		opacity: 0%;
-// 	}
-// 	30% {
-// 		opacity: 100%;
-// 	}
-// }
 
 .home-view {
 	position: fixed;
@@ -60,12 +51,11 @@ $unfold-speed : .7s;
 			object-position: center;
 			&.glow {
 				z-index: 1;
-				animation: glow 2s step(4, end) infinite;
-				// animation: rotate 2s step(4) infinite;
+				animation: glow 3s linear infinite;
 			}
 			&.neon {
 				z-index: 2;
-				animation: neon 2s steps(4, end) infinite;
+				animation: neon 3s linear infinite;
 			}
 		}
 	}
@@ -74,6 +64,8 @@ $unfold-speed : .7s;
 		bottom: -20vw;
 		width: 33%;
 		transition: transform $md-speed $ease;
+		opacity: 0;
+		animation: fade-in 1s 1.5s $ease forwards;
 		img {
 			width: 100%;
 		}
@@ -369,8 +361,8 @@ img {
 				margin-right: auto;
 				font-size: .8rem;
 				font-size: 3.25vw;
-				line-height: 1.3em;
-				max-width: 18em;
+				line-height: 1.2em;
+				max-width: 14em;
 				text-transform: lowercase;
 				margin: $space-2 auto;
 				@include respond($xlg) {
@@ -378,6 +370,22 @@ img {
 				}
 				@include respond($huge) {
 					font-size: 2rem;
+				}
+				&.list-title,
+				&.list-divider {
+					text-transform: lowercase;
+					font-size: 3.25vw * 2;
+					margin-top: 0;
+					@include respond($xlg) {
+						font-size: 2vw * 2;
+					}
+					@include respond($huge) {
+						font-size: 2rem * 2;
+					}
+				}
+				&.list-divider {
+					line-height: .4em;
+					margin-top: -.2em;
 				}
 			}
 		}

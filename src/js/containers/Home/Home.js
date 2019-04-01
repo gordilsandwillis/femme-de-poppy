@@ -150,8 +150,8 @@ class Home extends Component {
 						<div className="poppy-figure element-2"><img src={PoppyFigure} /></div>
 						<div className="center-content text element-1">
 							<div>
-								<p>Believing that lipstick is more than simply cosmetic, that it doesn’t just change how you look but also how you feel, Poppy King has been ideating and bringing to market cult lipsticks since the age of 18.</p>
-								<p>“With Femme de Poppy I wanted to design a lipstick that goes on with full traction precision (no lip liner needed!) then warms up with your body heat to bloom into a luscious, long lasting formula like a second skin.”</p>
+								<p>Poppy King has been designing lipsticks since she was 18 years old. Obssessed with perfecting the details that make the difference between a good lipstick and an amazing one, Femme de Poppy is her latest tribute to the magic of lipstick in how it transforms you inside as well as out.</p>
+								<p>Poppy works and lives in New York City and finds her inspiration for lipstick creations everywhere.</p>
 							</div>
 						</div>
 					</div>
@@ -171,10 +171,13 @@ class Home extends Component {
 					<div className="box element-2"><img src={AboutBox}/></div>
 					<div className="center-content text element-1">
 						<div>
-							<p>A specialty lipstick brand inspired by the complexity of female figures such Joan of Arc and Helen of Troy, created by lipstick entrepreneur Poppy King. Expertly designed shades, each with a unique story:</p>
-							<p>EVE — A delightfully naughty but wearable take on red with an iridescent snakeskin-like finish that molds to your lips.</p>
-							<p>LIP EN ROSE — Matte yet dewy wash of flattering rose that is buildable into a range of strengths.</p>
-							<p>EMPERORS NUDE — Peachy golden sheer matte with a touch of golden shimmer for a faux real nude look.</p>
+							<p className="list-title">Read My Lips</p>
+							<p className="list-divider">-</p>
+							<p>Self adjusting lipsticks</p>
+							<p>Personalized color</p>
+							<p>The formula is designed to customize to your lips using body heat</p>
+							<p>Watch them transform in front of your eyes </p>
+							<p>Apply, wait and see!</p>
 						</div>
 					</div>
 				</PageView>
