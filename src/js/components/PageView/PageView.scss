@@ -363,9 +363,10 @@ img {
 				font-size: 3.25vw;
 				line-height: 1.2em;
 				max-width: 17em;
-				text-transform: none;
+				text-transform: inherit;
 				margin: $space-1 auto;
 				@include respond($xlg) {
+					max-width: 17em;
 					font-size: 2vw;
 					margin: $space-1 auto;
 				}
@@ -374,7 +375,7 @@ img {
 				}
 				&.list-title,
 				&.list-divider {
-					text-transform: none;
+					text-transform: inherit;
 					font-size: 3.25vw * 2;
 					margin-top: 0;
 					@include respond($xlg) {
@@ -541,10 +542,15 @@ img {
 					margin-right: auto;
 					font-size: 4vw;
 					line-height: 1.3em;
-					max-width: 20em;
-					text-transform: none;
+					max-width: 13em;
+					text-transform: inherit;
 					margin: $space-2 auto;
+					@include respond($md) {
+						max-width: 18em;
+						font-size: 3vw;
+					}
 					@include respond($xlg) {
+						max-width: 20em;
 						font-size: 2.1vw;
 					}
 					@include respond($huge) {
@@ -555,7 +561,7 @@ img {
 			.poppy-figure {
 				position: absolute;
 				bottom: 5%;
-				left: 2%;
+				left: 0%;
 				width: 25%;
 				max-width: 150px;
 				
