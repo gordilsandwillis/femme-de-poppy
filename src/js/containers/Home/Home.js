@@ -122,7 +122,7 @@ class Home extends Component {
 							<div className="grid-flex middle center gutter-wide">
 								<div className="col-6">
 									<div className="text">
-										<p className="hide-md">Femme de poppy is available for purchase exclusively at Barneys New York</p>
+										<p className="hide-md">Femme de Poppy is available for purchase exclusively at Barneys New York</p>
 										<p className="show-md">Exclusively at Barneys New York</p>
 									</div>
 								</div>
