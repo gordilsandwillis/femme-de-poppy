@@ -362,18 +362,19 @@ img {
 				font-size: .8rem;
 				font-size: 3.25vw;
 				line-height: 1.2em;
-				max-width: 14em;
-				text-transform: lowercase;
-				margin: $space-2 auto;
+				max-width: 17em;
+				text-transform: none;
+				margin: $space-1 auto;
 				@include respond($xlg) {
 					font-size: 2vw;
+					margin: $space-1 auto;
 				}
 				@include respond($huge) {
 					font-size: 2rem;
 				}
 				&.list-title,
 				&.list-divider {
-					text-transform: lowercase;
+					text-transform: none;
 					font-size: 3.25vw * 2;
 					margin-top: 0;
 					@include respond($xlg) {
@@ -438,6 +439,10 @@ img {
 				max-height: 29vh;
 			}
 		}
+		.center-content > div {
+			width: 100%;
+			max-width: 800px;
+		}
 		.text {
 			color: #e84079;
 			font-size: 2.5rem;
@@ -475,8 +480,8 @@ img {
 				}
 			}
 			p {
-				max-width: 6em;
-				font-size: 1em;
+				max-width: 10em;
+				font-size: .8em;
 				position: relative;
 				z-index: 1;
 			}
@@ -536,14 +541,14 @@ img {
 					margin-right: auto;
 					font-size: 4vw;
 					line-height: 1.3em;
-					max-width: 15em;
-					text-transform: lowercase;
+					max-width: 20em;
+					text-transform: none;
 					margin: $space-2 auto;
 					@include respond($xlg) {
-						font-size: 2.3vw;
+						font-size: 2.1vw;
 					}
 					@include respond($huge) {
-						font-size: 2.5rem;
+						font-size: 2.2rem;
 					}
 				}
 			}

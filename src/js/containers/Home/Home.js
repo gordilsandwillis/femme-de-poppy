@@ -119,7 +119,7 @@ class Home extends Component {
 				>
 					<div className="center-content">
 						<div>
-							<div className="grid-flex middle gutter-wide">
+							<div className="grid-flex middle center gutter-wide">
 								<div className="col-6">
 									<div className="text">
 										<p className="hide-md">Femme de poppy is available for purchase exclusively at Barneys New York</p>
