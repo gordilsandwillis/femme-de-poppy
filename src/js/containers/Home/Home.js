@@ -171,13 +171,8 @@ class Home extends Component {
 					<div className="box element-2"><img src={AboutBox}/></div>
 					<div className="center-content text element-1">
 						<div>
-							<p className="list-title">Read My Lips</p>
-							<p className="list-divider">-</p>
-							<p>Self adjusting lipsticks</p>
-							<p>Personalized color</p>
-							<p>The formula is designed to customize to your lips using body heat</p>
-							<p>Watch them transform in front of your eyes </p>
-							<p>Apply, wait and see!</p>
+							<p>Femme de Poppy goes on the lips with opaque precision—no liner needed. As it warms up to your body, the shea butter in the formula relaxes into a moisturizing finish and lets its color blossom. Femme de Poppy works with your natural lip to transform into a shade that's just right, and all your own.</p>
+							<p>Love, Poppy</p>
 						</div>
 					</div>
 				</PageView>

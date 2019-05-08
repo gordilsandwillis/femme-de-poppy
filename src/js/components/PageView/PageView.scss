@@ -364,11 +364,11 @@ img {
 				line-height: 1.2em;
 				max-width: 17em;
 				text-transform: inherit;
-				margin: $space-1 auto;
+				margin: 1em auto;
 				@include respond($xlg) {
 					max-width: 17em;
 					font-size: 2vw;
-					margin: $space-1 auto;
+					margin: 1em auto;
 				}
 				@include respond($huge) {
 					font-size: 2rem;
