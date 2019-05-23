@@ -127,7 +127,7 @@ class Home extends Component {
 									</div>
 								</div>
 								<div className="col-6 pt-2">
-									<a className="logo image" href="https://www.barneys.com/designer/new-arrivals/femme-de-poppy/N-1109flhZ1dgswa1" target="_blank">
+									<a className="logo image" href="https://www.barneys.com/designer/femme-de-poppy/N-1dgswa1" target="_blank">
 										<img src={BuyBarneys} />
 									</a>
 								</div>
@@ -191,7 +191,7 @@ class Home extends Component {
 					<div>
 						<div className="center-content form">
 							{/* Hook up form to poppy@poppyking.com when going live */}
-							<form action="https://formspree.io/matt@gordilsandwillis.com" method="POST">
+							<form action="https://formspree.io/poppy@poppyking.com" method="POST">
 								<div className="element-1 pb-1px">
 									<div className="grid-flex gutter-tight v-spaced">
 										<div className="col-6"><input type="text" name="name" placeholder="NAME"/></div>
